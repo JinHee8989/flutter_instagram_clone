@@ -14,9 +14,18 @@ class AuthGate extends StatelessWidget {
         // User is not signed in
         if (!snapshot.hasData) {
           //로그인이 안됐을 경우
-          return const SignInScreen(providerConfigs: [
-            EmailProviderConfiguration(),
-          ]);
+          return SignInScreen(
+              providerConfigs: [
+                EmailProviderConfiguration(),
+              ],
+              headerBuilder: (context, constraints, _) {
+                return Center(
+                  child: Text(
+                    'Instagram Clone',
+                    style: TextStyle(fontSize: 40),
+                  ),
+                );
+              });
         }
 
         // Render your application if authenticated

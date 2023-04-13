@@ -28,12 +28,12 @@ class AccountPage extends StatelessWidget {
               children: [
                 Stack(
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       width: 80,
                       height: 80,
                       child: CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            'https://cdn.sisamagazine.co.kr/news/photo/202112/420043_422171_2028.jpg'),
+                        backgroundImage:
+                            NetworkImage(model.getProfileImageUrl()),
                       ),
                     ),
                     Container(
@@ -67,8 +67,8 @@ class AccountPage extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                const Text(
-                  '변진희',
+                Text(
+                  model.getNickName(),
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
