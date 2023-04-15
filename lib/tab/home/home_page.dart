@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_renew/tab/home/home_model.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final model = HomeModal();
@@ -30,8 +35,15 @@ class HomePage extends StatelessWidget {
                   SizedBox(
                     width: 80,
                     height: 80,
-                    child: CircleAvatar(
-                      backgroundImage: NetworkImage(model.getProfileImageUrl()),
+                    child: GestureDetector(
+                      onTap: () async {
+                        await model.updateProfileImage();
+                        setState(() {});
+                      },
+                      child: CircleAvatar(
+                        backgroundImage:
+                            NetworkImage(model.getProfileImageUrl()),
+                      ),
                     ),
                   ),
                   SizedBox(height: 8),
